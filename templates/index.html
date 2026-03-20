@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YOLO Object Detector</title>
+  <meta name="description" content="Upload an image and detect objects using your locally trained YOLOv8 model." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<div class="app-wrapper">
+
+  <!-- ── Header ─────────────────────────────── -->
+  <header class="header">
+    <h1>🔍 YOLO Object Detector</h1>
+    <p>Upload an image to detect objects using your locally trained YOLOv8 model</p>
+  </header>
+
+  <!-- ── Upload Card ────────────────────────── -->
+  <div class="card">
+    <div class="card-title"><span class="icon">📤</span> Upload Image</div>
+
+    <div class="upload-zone" id="dropZone">
+      <input type="file" id="fileInput" accept="image/*" />
+      <span class="uz-icon">🖼️</span>
+      <p class="uz-text">Drag &amp; drop an image here or <span>browse files</span></p>
+
+      <div class="preview-strip hidden" id="previewStrip">
+        <img id="previewImg" alt="preview" />
+        <div class="file-info">
+          <div class="fname" id="fileName">—</div>
+          <div class="fsize" id="fileSize">—</div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <button class="btn-detect" id="btnDetect" disabled>
+      <span class="spinner"></span>
+      <span class="btn-label">🚀 Detect Objects</span>
+    </button>
+  </div>
+
+  <!-- ── Error Toast ────────────────────────── -->
+  <div class="error-toast hidden" id="errorToast"></div>
+
+  <!-- ── Stats Bar ──────────────────────────── -->
+  <div class="stats-bar hidden" id="statsBar">
+    <div class="stat-card">
+      <div class="stat-value" id="statTotal">0</div>
+      <div class="stat-label">Objects Detected</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statAvgConf">0%</div>
+      <div class="stat-label">Avg Confidence</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statBest">—</div>
+      <div class="stat-label">Top Detection</div>
+    </div>
+  </div>
+
+  <!-- ── Results ────────────────────────────── -->
+  <div class="results-grid hidden" id="resultsWrap">
+
+    <!-- Annotated image -->
+    <div class="card result-image-wrap">
+      <div class="card-title"><span class="icon">🎯</span> Annotated Image</div>
+      <img id="annotatedImg" alt="annotated result" />
+    </div>
+
+    <!-- Detections table -->
+    <div class="card">
+      <div class="card-title"><span class="icon">📋</span> Detections</div>
+      <div style="overflow-x:auto;">
+        <table class="det-table">
+          <thead>
+            <tr>
+              <th>Object</th>
+              <th>Confidence</th>
+              <th>Bounding Box</th>
+            </tr>
+          </thead>
+          <tbody id="detBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
