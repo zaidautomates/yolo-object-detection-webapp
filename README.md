@@ -1,3 +1,19 @@
+# YOLO Object Detection Web App
+
+## Repository overview
+
+A Flask web application for YOLOv8 object detection with image inference and REST API endpoints.
+
+The existing README contains the main quick-start and API documentation.
+
+## Documentation status
+
+This overview is documentation-only. No application code, configuration, dependency manifest, or runtime behavior is changed by this update.
+
+---
+
+## Existing project notes
+
 <div align="center">
 
 ![YOLOv8](https://img.shields.io/badge/YOLOv8-Object%20Detection-blueviolet?style=for-the-badge&logo=python&logoColor=white)
